@@ -1,7 +1,15 @@
 const express = require("express")
-const db = require("./resource")
 
+const db = require("./resource")
+const users = require("./Users/user-models")
+const usersRouter = require("./Users/user-router")
+
+const router = express.Router()
 const server = express()
+
+server.use(express.json())
+
+router.use( "/api/posts", usersRouter )
 
 server.get("/", (req,res) => {
     res.json({ message: "Hello, World" })
